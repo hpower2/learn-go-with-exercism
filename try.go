@@ -2,32 +2,21 @@ package main
 
 import (
 	"fmt"
-	"math"
-	// "strings"
+	"regexp"
+	"strings"
 )
 
-
+func RemoveEndOfLineText(text string) string{
+	var sl1 []string
+	re := regexp.MustCompile(`(end-of-line)\d+`)
+	sl1 = re.Split(text, -1)
+	mySen := strings.Join(sl1 , " ")
+    return mySen
+}
 
 
 func main() {
-	var newVal []int
-	state := false
-	stateVal := 0
-    for in, val := range s{
-        if val >= 48 && val <= 57{
-			newVal = append(newVal, int(val-48))
-			stateVal = in
-		}
-		if val == 45 && stateVal == 0{
-			state = math.Max()
-		}
-    }
-	l := len(newVal)-1
-	myItoa := 0
-	for in, val :=range newVal{
-		myItoa = myItoa + val * int(math.Pow10(l-in))
-	}
-	if state == true{
-		myItoa = -1 * myItoa
-	}
+    var text string
+	text = "[INF] end-of-line23033 Network Failure end-of-line27"
+	fmt.Println(RemoveEndOfLineText(text))
 }
