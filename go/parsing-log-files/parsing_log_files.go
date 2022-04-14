@@ -11,35 +11,35 @@ func IsValidLine(text string) bool {
 }
 
 func SplitLogLine(text string) []string {
-    var sl []string
-    re := regexp.MustCompile(`<[~=*-]*>`)
-    sl = re.Split(text, -1)
-    return sl
+	var sl []string
+	re := regexp.MustCompile(`<[~=*-]*>`)
+	sl = re.Split(text, -1)
+	return sl
 }
 
 func CountQuotedPasswords(lines []string) int {
-    var counter int
-	for _, val := range lines{
+	var counter int
+	for _, val := range lines {
 		re := regexp.MustCompile(`(?i)".*password.*"`)
-        match := re.MatchString(val)
-        if match{
-            counter++
-        }
+		match := re.MatchString(val)
+		if match {
+			counter++
+		}
 	}
-    return counter
+	return counter
 }
 
-func RemoveEndOfLineText(text string) string{
+func RemoveEndOfLineText(text string) string {
 	re := regexp.MustCompile(`end-of-line\d*`)
-    return re.ReplaceAllString(text, "")
+	return re.ReplaceAllString(text, "")
 }
 
 func TagWithUserName(lines []string) []string {
 	re1 := regexp.MustCompile(`User\s+(\w+)`)
 	ret := []string{}
-	for _, val := range lines{
+	for _, val := range lines {
 		founds := re1.FindStringSubmatch(val)
-		if founds != nil{
+		if founds != nil {
 			val = fmt.Sprintf("[USR] %s %s", founds[1], val)
 		}
 		ret = append(ret, val)
