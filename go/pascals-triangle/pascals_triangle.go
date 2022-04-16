@@ -1,8 +1,4 @@
-package main
-
-import (
-	"fmt"
-)
+package pascal
 
 func calculateRow(n int) []int{
 	if n == 1{
@@ -29,9 +25,4 @@ func Triangle(n int) (out [][]int) {
 		out = append(out, calculateRow(i))
 	}
 	return out
-}
-
-func main() {
-	myNumber := 5
-	fmt.Println(Triangle(myNumber))
 }
